@@ -4,52 +4,27 @@ import { Text, View } from '../components/Themed';
 
 import { TextInput, SafeAreaView, Button, TouchableOpacity } from 'react-native';
 import { RootStackScreenProps, RootTabScreenProps } from '../types';
+import { setBackgroundColorAsync } from 'expo-system-ui';
 
-export default function Login({ navigation }: RootStackScreenProps<'Login'>) {
+export default function Main({ navigation }: RootStackScreenProps<'Login'>) {
   let EmailID = null;
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../assets/images/memoriumlogo.png')}
-        style={{
-          width: 250,
-          height: 250,
-
-          resizeMode: 'contain',
-        }}
-      ></Image>
-
+    <SafeAreaView>
       <View style={styles.container}>
-        <Text style={styles.text}>Email ID</Text>
-        <TextInput placeholder="Email" style={styles.textInput} autoCapitalize="none" autoComplete="email" />
-
-        <Text style={styles.text}>Password</Text>
-        <TextInput
-          placeholder="Password"
-          secureTextEntry={true}
-          style={styles.textInput}
-          autoComplete="password"
-          autoCapitalize="none"
-        />
+        <Image
+          source={require('../assets/images/memoriumlogo.png')}
+          style={{
+            width: 250,
+            height: 250,
+            borderRadius: 400 / 2,
+            resizeMode: 'contain',
+            backgroundColor: '#2314321',
+          }}
+        ></Image>
       </View>
-      <TouchableOpacity style={styles.btn} onPress={() => LoginInit(navigation)}>
-        <Text>Log in</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.signupbtn} onPress={() => SignUpInit(navigation)}>
-        <Text>Sign up</Text>
-      </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
-}
-
-function LoginInit(navigation: any) {
-  navigation.navigate('Root');
-}
-
-function SignUpInit(navigation: any) {
-  navigation.navigate('SignUp');
 }
 
 const styles = StyleSheet.create({
