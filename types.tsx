@@ -20,6 +20,7 @@ export type RootStackParamList = {
   SignUp: undefined;
   Register: undefined;
   Main: undefined;
+  Camera_: undefined;
   NotFound: undefined;
 };
 

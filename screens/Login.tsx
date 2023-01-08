@@ -45,7 +45,7 @@ export default function Login({ navigation }: RootStackScreenProps<'Login'>) {
 }
 
 function LoginInit(navigation: any) {
-  navigation.navigate('Root');
+  navigation.navigate('Main');
 }
 
 function SignUpInit(navigation: any) {

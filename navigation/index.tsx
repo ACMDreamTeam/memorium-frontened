@@ -18,6 +18,7 @@ import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
 import Resgister from '../screens/Register';
 import Main from '../screens/Main';
+import Camera_ from '../screens/Camera_';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -42,6 +43,7 @@ function RootNavigator() {
       <Stack.Screen name="Register" component={Resgister} options={{ title: '' }} />
       <Stack.Screen name="SignUp" component={SignUp} options={{ title: '' }} />
       <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
+      <Stack.Screen name="Camera_" component={Camera_} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />

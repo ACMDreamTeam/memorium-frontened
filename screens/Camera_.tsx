@@ -8,49 +8,41 @@ import { Camera, CameraType } from 'expo-camera';
 import * as faceapi from 'face-api.js';
 import { useEffect, useState } from 'react';
 
-export default function Main({ navigation }: RootStackScreenProps<'Login'>) {
-  let EmailID = null;
+export default function Camera_({ navigation }: RootStackScreenProps<'Camera_'>) {
+  const [faces, setFaces] = useState<faceapi.FaceDetection[]>([]);
+  const [isCameraReady, setIsCameraReady] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      await faceapi.loadTinyFaceDetectorModel('/models');
+      setIsCameraReady(true);
+    })();
+  }, []);
+
+  const handleFacesDetected = ({ faces }: { faces: any }) => {
+    setFaces(faces);
+  };
+
+  console.log(isCameraReady);
 
   return (
-    <View style={[styles.container]}>
-      <View style={[{ flexDirection: 'row' }]}>
-        <Image
-          source={require('../assets/images/user.png')}
-          style={{
-            width: 40,
-            height: 40,
-            marginTop: 80,
-            marginStart: 15,
-          }}
-        ></Image>
-        <TextInput placeholder="Email" style={styles.textInput} autoCapitalize="none" autoComplete="email" />
-      </View>
-
-      <View style={styles.BackCard}>
-        <View style={styles.flexbox2}>
-          <TouchableOpacity style={styles.roundButton} onPress={() => openCamera(navigation)}>
-            <Text>Camera</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.roundButton}>
-            <Text>I'm a button</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.roundButton}>
-            <Text>I'm a button</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.roundButton}>
-            <Text>I'm a button</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+    <View style={styles.container}>
+      {isCameraReady && (
+        <Camera
+          style={styles.camera}
+          type={CameraType.front}
+          // onFacesDetected={handleFacesDetected}
+          // faceDetectorSettings={{
+          //   mode: 'fast',
+          //   detectLandmarks: true,
+          //   runClassification: true,
+          // }}
+        >
+          {faces.length > 0 && <Text style={styles.faceCount}>{faces.length} face(s) detected</Text>}
+        </Camera>
+      )}
     </View>
   );
-
-  function openCamera(navigate: any) {
-    navigation.navigate('Camera_');
-  }
 }
 
 const styles = StyleSheet.create({
