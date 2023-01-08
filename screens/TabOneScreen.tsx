@@ -1,17 +1,19 @@
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>Main page</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
     </View>
   );
+}
+
+function LogOut(navigation: any) {
+  navigation.navigate('Login');
 }
 
 const styles = StyleSheet.create({
@@ -19,6 +21,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  logout: {
+    marginTop: 25,
+    borderWidth: 2,
+    borderRadius: 10,
+    padding: 10,
+    borderColor: '#227746',
   },
   title: {
     fontSize: 20,
