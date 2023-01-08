@@ -1,7 +1,6 @@
 import { StyleSheet, Image } from 'react-native';
 
 import { Text, View } from '../components/Themed';
-
 import { TextInput, SafeAreaView, Button, TouchableOpacity } from 'react-native';
 import { RootStackScreenProps, RootTabScreenProps } from '../types';
 import { setBackgroundColorAsync } from 'expo-system-ui';
@@ -10,30 +9,65 @@ export default function Main({ navigation }: RootStackScreenProps<'Login'>) {
   let EmailID = null;
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
+    <View style={[styles.container]}>
+      <View style={[{ flexDirection: 'row' }]}>
         <Image
-          source={require('../assets/images/memoriumlogo.png')}
+          source={require('../assets/images/user.png')}
           style={{
-            width: 250,
-            height: 250,
-            borderRadius: 400 / 2,
-            resizeMode: 'contain',
-            backgroundColor: '#2314321',
+            width: 40,
+            height: 40,
+            marginTop: 80,
+            marginStart: 15,
           }}
         ></Image>
+        <TextInput placeholder="Email" style={styles.textInput} autoCapitalize="none" autoComplete="email" />
       </View>
-    </SafeAreaView>
+
+      <View style={styles.BackCard}>
+        <View style={styles.flexbox2}>
+          <TouchableOpacity style={styles.roundButton}>
+            <Text>I'm a button</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.roundButton}>
+            <Text>I'm a button</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.roundButton}>
+            <Text>I'm a button</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.roundButton}>
+            <Text>I'm a button</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ffff',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 
+  flexbox1: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  flexbox2: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#ffff',
+  },
+
+  BackCard: {
+    backgroundColor: 'white',
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    flex: 1,
+    flexDirection: 'row',
+  },
   signupbtn: {
     marginTop: 25,
     borderWidth: 2,
@@ -45,10 +79,24 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     borderColor: '#077294',
   },
+
+  roundButton: {
+    width: 80,
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 80,
+    marginStart: 15,
+    backgroundColor: 'orange',
+  },
+
   textInput: {
-    width: 200,
+    width: 300,
     height: 40,
     margin: 10,
+    marginTop: 80,
     borderWidth: 1,
     padding: 10,
 

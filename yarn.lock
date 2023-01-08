@@ -7774,6 +7774,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     react-native: 0.70.6
+    react-native-input-search-bar: ^0.0.8
     react-native-safe-area-context: 4.4.1
     react-native-screens: ~3.18.2
     react-native-ui-lib: ^6.27.3
@@ -9419,6 +9420,17 @@ __metadata:
   version: 0.70.3
   resolution: "react-native-gradle-plugin@npm:0.70.3"
   checksum: 04a3379842bcb4709ac6b37e093a3de59acd33b28b200885843b13908fac685a77ab81d732c34090c56e5c0eec971d578b227f302bd04fe7901e8792d434f41f
+  languageName: node
+  linkType: hard
+
+"react-native-input-search-bar@npm:^0.0.8":
+  version: 0.0.8
+  resolution: "react-native-input-search-bar@npm:0.0.8"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-native: ">0.60.0"
+    react-native-svg: 13.6.0
+  checksum: acefab2c8e469bd55e1588ee2057c9db3a36f33e5b1459a16776955447614ff749d53701588168353b25d3b3b91d4a69d29c39cd316deaba30bfd674d4608f92
   languageName: node
   linkType: hard
 
