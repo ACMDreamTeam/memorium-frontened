@@ -1,12 +1,9 @@
 import { StyleSheet, Image } from 'react-native';
 
 import { Text, View } from '../components/Themed';
-import { TextInput, SafeAreaView, Button, TouchableOpacity } from 'react-native';
-import { RootStackScreenProps, RootTabScreenProps } from '../types';
-import { setBackgroundColorAsync } from 'expo-system-ui';
-import { Camera, CameraType } from 'expo-camera';
-import * as faceapi from 'face-api.js';
-import { useEffect, useState } from 'react';
+import { TextInput, TouchableOpacity } from 'react-native';
+import { RootStackScreenProps } from '../types';
+
 
 export default function Main({ navigation }: RootStackScreenProps<'Login'>) {
   let EmailID = null;
@@ -29,19 +26,19 @@ export default function Main({ navigation }: RootStackScreenProps<'Login'>) {
       <View style={styles.BackCard}>
         <View style={styles.flexbox2}>
           <TouchableOpacity style={styles.roundButton} onPress={() => openCamera(navigation)}>
-            <Text>Camera</Text>
+            <Text style={styles.btnTxt}>Camera</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.roundButton}>
-            <Text>I'm a button</Text>
+            <Text style={styles.btnTxt}>I'm a button</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.roundButton}>
-            <Text>I'm a button</Text>
+            <Text style={styles.btnTxt}>I'm a button</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.roundButton}>
-            <Text>I'm a button</Text>
+            <Text style={styles.btnTxt}>I'm a button</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -58,6 +55,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  btnTxt:{
+    color:'white',
   },
 
   flexbox1: {
@@ -77,17 +78,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
-  signupbtn: {
-    marginTop: 25,
-    borderWidth: 2,
-    borderRadius: 10,
-    padding: 10,
-    width: 200,
-    height: 45,
-    alignItems: 'center',
-    alignContent: 'center',
-    borderColor: '#077294',
-  },
+ 
 
   roundButton: {
     width: 80,
@@ -98,7 +89,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 80,
     marginStart: 15,
-    backgroundColor: 'orange',
+    color: "white",
+    backgroundColor: 'black',
   },
 
   textInput: {
