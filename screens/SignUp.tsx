@@ -3,26 +3,44 @@ import { Text, View } from '../components/Themed';
 
 import { TextInput, SafeAreaView, Button, TouchableOpacity } from 'react-native';
 import { RootStackScreenProps } from '../types';
+import { useState } from 'react';
+import { User } from '../Classes/User';
 
 export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
+  let user: User = new User();
+
+  const [name, setName]: any = useState();
+  const [email, setEmail]: any = useState();
+  const [Password, setPassword]: any = useState();
+
+  user.name = name;
+  user.email = email;
+  user.passwrod = Password;
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Sign up</Text>
       <View style={styles.container}>
         <Text style={styles.text1}>Username</Text>
-        <TextInput style={styles.textInput} autoCapitalize="none" autoComplete="name" />
+        <TextInput style={styles.textInput} autoCapitalize="none" autoComplete="name" onChangeText={setName} />
         <Text style={styles.text}>EmailID</Text>
-        <TextInput style={styles.textInput} autoComplete="gender" autoCapitalize="none" />
+        <TextInput style={styles.textInput} autoComplete="gender" autoCapitalize="none" onChangeText={setEmail} />
         <Text style={styles.text}>Password</Text>
-        <TextInput style={styles.textInput} autoComplete="gender" autoCapitalize="none" />
+        <TextInput style={styles.textInput} autoComplete="gender" autoCapitalize="none" onChangeText={setPassword} />
         <Text style={styles.text}>Confirm Password</Text>
         <TextInput style={styles.textInput} autoComplete="gender" autoCapitalize="none" />
       </View>
-      <TouchableOpacity style={styles.signupbtn} onPress={() => navigation.navigate('Main')}>
+      <TouchableOpacity style={styles.signupbtn} onPress={() => SignUpUser(navigation, user)}>
         <Text>Sign up</Text>
       </TouchableOpacity>
     </View>
   );
+}
+
+function SignUpUser(navigation: any, user: User) {
+  console.log(user.email);
+  console.log(user.name);
+  console.log(user.passwrod);
+  navigation.navigate('Register', { User: user });
 }
 
 const styles = StyleSheet.create({

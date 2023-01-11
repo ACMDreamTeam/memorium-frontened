@@ -45,7 +45,7 @@ export default function Camera_({ navigation }: RootStackScreenProps<'Camera_'>)
   };
 
   return (
-    <View style={styles.cameraContainer}>
+    <View>
       <Camera ref={ref => setCamera(ref)} style={styles.fixedRatio} type={type} ratio={'4:3'} />
       <Button
         title="Flip Video"

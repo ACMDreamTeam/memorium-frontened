@@ -5,6 +5,12 @@ import { TextInput, SafeAreaView, Button } from 'react-native';
 import { RootStackScreenProps } from '../types';
 
 export default function Resgister({ navigation }: RootStackScreenProps<'Register'>) {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ postName: 'signup' }),
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Complete your profile</Text>
