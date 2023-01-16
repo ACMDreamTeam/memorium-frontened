@@ -21,6 +21,10 @@ export type RootStackParamList = {
   Register: undefined;
   Main: undefined;
   Camera_: undefined;
+  JournalAdd: undefined;
+  JournalView: undefined;
+  ReminderAdd: undefined;
+  ReminderView: undefined;
   NotFound: undefined;
 };
 

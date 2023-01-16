@@ -19,6 +19,10 @@ import SignUp from '../screens/SignUp';
 import Resgister from '../screens/Register';
 import Main from '../screens/Main';
 import Camera_ from '../screens/Camera_';
+import JournalAdd from '../screens/JournalAdd';
+import JournalView from '../screens/JournalView';
+import ReminderAdd from '../screens/ReminderAdd';
+import ReminderView from '../screens/ReminderView';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -45,6 +49,10 @@ function RootNavigator() {
       <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
       <Stack.Screen name="Camera_" component={Camera_} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="JournalAdd" componenet={JournalAdd} />
+      <Stack.Screen name="JournalView" componenet={JournalView} />
+      <Stack.Screen name="ReminderAdd" componenet={ReminderAdd} />
+      <Stack.Screen name="ReminderView" componenet={ReminderView} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
