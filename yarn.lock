@@ -7939,6 +7939,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     react-native: 0.70.6
+    react-native-date-picker: ^4.2.6
     react-native-input-search-bar: ^0.0.8
     react-native-safe-area-context: 4.4.1
     react-native-screens: ~3.18.2
@@ -9409,7 +9410,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:*, prop-types@npm:^15.5.10, prop-types@npm:^15.7.2":
+"prop-types@npm:*, prop-types@npm:^15.5.10, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -9586,6 +9587,15 @@ __metadata:
     jscodeshift: ^0.13.1
     nullthrows: ^1.1.1
   checksum: 2a50ad71e09bc8cbb3694057cf47d6e9665c16f3968d1dc2b71e83c8c4e7be3b07b74bea08750ec9c8f6c60e6c746a5f695963c8694e5a76edcbce35a53a6a06
+  languageName: node
+  linkType: hard
+
+"react-native-date-picker@npm:^4.2.6":
+  version: 4.2.6
+  resolution: "react-native-date-picker@npm:4.2.6"
+  dependencies:
+    prop-types: ^15.8.1
+  checksum: 654c804e6b1ee0c0a6bb200c87eb4cdf520db901b0f75518a63f556eb753cb7ba521461691ea9f8c89542ab8c3862c5520e4b512252b3e19556eb512a5872ca4
   languageName: node
   linkType: hard
 

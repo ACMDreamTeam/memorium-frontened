@@ -40,7 +40,13 @@ function SignUpUser(navigation: any, user: User) {
   console.log(user.email);
   console.log(user.name);
   console.log(user.passwrod);
-  navigation.navigate('Register', { User: user });
+  navigation.navigate('Register', {
+    user: {
+      email: user.email,
+      name: user.name,
+      password: user.passwrod,
+    },
+  });
 }
 
 const styles = StyleSheet.create({
