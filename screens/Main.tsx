@@ -4,8 +4,7 @@ import { Text, View } from '../components/Themed';
 import { TextInput, TouchableOpacity } from 'react-native';
 import { RootStackScreenProps } from '../types';
 
-
-export default function Main({ navigation }: RootStackScreenProps<'Login'>) {
+export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
   let EmailID = null;
 
   return (
@@ -20,7 +19,7 @@ export default function Main({ navigation }: RootStackScreenProps<'Login'>) {
             marginStart: 15,
           }}
         ></Image>
-        <TextInput placeholder="Email" style={styles.textInput} autoCapitalize="none" autoComplete="email" />
+        <TextInput placeholder="Search" style={styles.textInput} autoCapitalize="none" />
       </View>
 
       <View style={styles.BackCard}>
@@ -29,16 +28,16 @@ export default function Main({ navigation }: RootStackScreenProps<'Login'>) {
             <Text style={styles.btnTxt}>Camera</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.roundButton}>
-            <Text style={styles.btnTxt}>I'm a button</Text>
+          <TouchableOpacity style={styles.roundButton} onPress={() => openJournal(navigation)}>
+            <Text style={styles.btnTxt}>Journal</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.roundButton}>
-            <Text style={styles.btnTxt}>I'm a button</Text>
+          <TouchableOpacity style={styles.roundButton} onPress={() => openMedications(navigation)}>
+            <Text style={styles.btnTxt}>Medications</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.roundButton}>
-            <Text style={styles.btnTxt}>I'm a button</Text>
+          <TouchableOpacity style={styles.roundButton} onPress={() => openAboutMe(navigation)}>
+            <Text style={styles.btnTxt}>About me</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -46,6 +45,18 @@ export default function Main({ navigation }: RootStackScreenProps<'Login'>) {
   );
 
   function openCamera(navigate: any) {
+    navigation.navigate('Camera_');
+  }
+
+  function openJournal(navigate: any) {
+    navigation.navigate('JournalView');
+  }
+
+  function openMedications(navigate: any) {
+    navigation.navigate('ReminderView');
+  }
+
+  function openAboutMe(navigate: any) {
     navigation.navigate('Camera_');
   }
 }
@@ -57,8 +68,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  btnTxt:{
-    color:'white',
+  btnTxt: {
+    color: 'white',
   },
 
   flexbox1: {
@@ -78,7 +89,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
- 
 
   roundButton: {
     width: 80,
@@ -89,7 +99,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 80,
     marginStart: 15,
-    color: "white",
+    color: 'white',
     backgroundColor: 'black',
   },
 

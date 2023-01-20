@@ -25,6 +25,7 @@ export type RootStackParamList = {
   JournalView: undefined;
   ReminderAdd: undefined;
   ReminderView: undefined;
+  AboutMe: undefined;
   NotFound: undefined;
 };
 

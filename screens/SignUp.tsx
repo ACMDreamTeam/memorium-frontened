@@ -23,11 +23,16 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
         <Text style={styles.text1}>Username</Text>
         <TextInput style={styles.textInput} autoCapitalize="none" autoComplete="name" onChangeText={setName} />
         <Text style={styles.text}>EmailID</Text>
-        <TextInput style={styles.textInput} autoComplete="gender" autoCapitalize="none" onChangeText={setEmail} />
+        <TextInput style={styles.textInput} autoComplete="email" autoCapitalize="none" onChangeText={setEmail} />
         <Text style={styles.text}>Password</Text>
-        <TextInput style={styles.textInput} autoComplete="gender" autoCapitalize="none" onChangeText={setPassword} />
+        <TextInput
+          style={styles.textInput}
+          autoComplete="password-new"
+          autoCapitalize="none"
+          onChangeText={setPassword}
+        />
         <Text style={styles.text}>Confirm Password</Text>
-        <TextInput style={styles.textInput} autoComplete="gender" autoCapitalize="none" />
+        <TextInput style={styles.textInput} autoComplete="password-new" autoCapitalize="none" />
       </View>
       <TouchableOpacity style={styles.signupbtn} onPress={() => SignUpUser(navigation, user)}>
         <Text>Sign up</Text>
