@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 285,
     height: 57,
-    position: 'absolute',
-    top: 240,
+    marginBottom: 38,
+
   },
 
   button: {
@@ -123,8 +123,7 @@ const styles = StyleSheet.create({
   textInput: {
     width: '80%',
     height: 44,
-    margin: 10,
-    borderWidth: 1,
+    marginBottom: 27,
     borderRadius: 100,
     backgroundColor: 'white',
     textAlign: 'left',
