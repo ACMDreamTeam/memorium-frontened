@@ -17,21 +17,44 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
   user.email = email;
   user.password = Password;
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Sign up</Text>
-      <View style={styles.container}>
-        <Text style={styles.text1}>Username</Text>
-        <TextInput style={styles.textInput} onChangeText={setName} />
-        <Text style={styles.text}>EmailID</Text>
-        <TextInput style={styles.textInput} onChangeText={setEmail} />
-        <Text style={styles.text}>Password</Text>
-        <TextInput style={styles.textInput} secureTextEntry={true} onChangeText={setPassword} />
-        <Text style={styles.text}>Confirm Password</Text>
-        <TextInput style={styles.textInput} secureTextEntry={true} />
+    <View style={styles.bgContainer}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Sign up and we'll remember everything for you</Text>
       </View>
-      <TouchableOpacity style={styles.signupbtn} onPress={() => SignUpUser(navigation, user)}>
-        <Text>Sign up</Text>
-      </TouchableOpacity>
+      <View style={styles.formContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholderTextColor={'rgba(60, 60, 67, 0.6)'}
+          placeholder="Username"
+          onChangeText={setName}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholderTextColor={'rgba(60, 60, 67, 0.6)'}
+          placeholder="Email"
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholderTextColor={'rgba(60, 60, 67, 0.6)'}
+          placeholder="Password"
+          secureTextEntry={true}
+          onChangeText={setPassword}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholderTextColor={'rgba(60, 60, 67, 0.6)'}
+          placeholder="Confirm Password"
+          secureTextEntry={true}
+        />
+        <TouchableOpacity style={styles.button} onPress={() => SignUpUser(navigation, user)}>
+          <Text style={styles.buttonText}>Continue</Text>
+        </TouchableOpacity>
+        <Text style={styles.agreementText}>
+          By creating an account, you agree to our
+          <Text style={styles.termsText}> Terms and Conditions.</Text>
+        </Text>
+      </View>
     </View>
   );
 }
@@ -47,52 +70,71 @@ function SignUpUser(navigation: any, user: User) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  bgContainer: {
+    height: '100%',
     backgroundColor: '#fff',
+  },
+
+  formContainer: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
+    height: '35%',
+    position: 'relative',
   },
-  textInput: {
-    width: 200,
-    height: 40,
-    margin: 20,
-    backgroundColor: '#ffff',
-    borderWidth: 1,
-    padding: 10,
+  titleContainer: {
+    backgroundColor: '#fff',
     alignItems: 'center',
-    borderRadius: 5,
+    justifyContent: 'center',
+    height: '40%',
+    position: 'relative',
   },
-
-  signupbtn: {
-    width: 200,
-    height: 40,
-    marginTop: 25,
-    borderWidth: 2,
-    borderRadius: 10,
-    padding: 10,
-    alignItems: 'center',
-    borderColor: '#077294',
-  },
-
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: '700',
+    width: '85%',
+    fontSize: 22,
+    color: '#0F4674',
     textAlign: 'center',
   },
-  text1: {
-    marginTop: 50,
+  textInput: {
+    width: '80%',
+    height: 44,
+    marginBottom: 27,
+    borderWidth: 1,
+    borderRadius: 100,
+    backgroundColor: 'white',
+    textAlign: 'left',
+    paddingLeft: 20,
+    marginLeft: 27,
+    marginRight: 28,
+    borderColor: '#0F4674',
   },
-  text: {
-    fontSize: 15,
 
-    marginTop: 20,
-  },
-
-  btn: {
-    width: 200,
-    height: 80,
-    margin: 50,
+  button: {
     borderWidth: 2,
-    color: '#ffff',
+    backgroundColor: '#0F4674',
+    marginTop: 25,
+    borderRadius: 100,
+    width: '65%',
+    height: 56,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#0F4674',
+  },
+
+  buttonText: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: 'white',
+  },
+  agreementText: {
+    color: 'rgba(60, 60, 67, 0.9)',
+    width: '70%',
+    textAlign: 'center',
+    marginTop: 10,
+  },
+  termsText: {
+    fontWeight: '500',
+    textDecorationLine: 'underline',
   },
 });

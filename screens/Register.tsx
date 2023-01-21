@@ -1,4 +1,4 @@
-import { Alert, StyleSheet } from 'react-native';
+import { Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text, View } from '../components/Themed';
 import * as React from 'react';
 import { TextInput, SafeAreaView, Button } from 'react-native';
@@ -30,19 +30,38 @@ export default function Register({ navigation, route }: RootStackScreenProps<'Re
   user.gender = gender;
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Complete your profile for</Text>
-      <Text style={styles.title}>{(route.params as any).user.name}</Text>
-
-      <View style={styles.container}>
-        <Text style={styles.text}>Age</Text>
-        <TextInput style={styles.textInput} autoCapitalize="none" keyboardType="numeric" onChangeText={setAge} />
-
-        <Text style={styles.text}>Gender</Text>
-        <TextInput style={styles.textInput} autoComplete="gender" autoCapitalize="none" onChangeText={setGender} />
+    <View style={styles.bgContainer}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>You can leave these blank if you don't remember it, we'll ask you when you rememeber.</Text>
+        <Text style={styles.title}>{(route.params as any).user.name}</Text>
       </View>
 
-      <Button title="Save" onPress={() => PostAndSignUp(navigation, user)}></Button>
+      <View style={styles.formContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Age"
+          placeholderTextColor={'rgba(60, 60, 67, 0.8)'}
+          autoCapitalize="none"
+          keyboardType="numeric"
+          onChangeText={setAge}
+        />
+
+        <TextInput
+          style={styles.textInput}
+          placeholder="Gender"
+          placeholderTextColor={'rgba(60, 60, 67, 0.8)'}
+          autoComplete="gender"
+          autoCapitalize="none"
+          onChangeText={setGender}
+        />
+      <TouchableOpacity style={styles.button} onPress={() => PostAndSignUp(navigation, user) }>
+          <Text style={styles.buttonText}>Get Started</Text>
+        </TouchableOpacity>
+        <Text style={styles.agreementText}>
+          We never share your data with anyone without your permission, read our
+          <Text style={styles.termsText}> Privacy Policy</Text>
+        </Text>
+      </View>
     </View>
   );
 }
@@ -83,37 +102,69 @@ async function PostAndSignUp(navigation: any, user: any) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#ffff',
+  bgContainer: {
+    height: '100%',
+    backgroundColor: '#fff',
+  },
+
+  titleContainer: {
+    height: '30%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  formContainer:{
+    height: '40%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textInput: {
-    width: 200,
-    height: 40,
-    margin: 20,
+    width: '80%',
+    height: 44,
+    marginBottom: 27,
     borderWidth: 1,
-    padding: 10,
-    alignItems: 'center',
-    borderRadius: 5,
+    borderRadius: 100,
+    backgroundColor: 'white',
+    textAlign: 'left',
+    paddingLeft: 20,
+    marginLeft: 27,
+    marginRight: 28,
+    borderColor: '#0F4674',
   },
+
+  button: {
+    borderWidth: 2,
+    backgroundColor: '#0F4674',
+    marginTop: 25,
+    borderRadius: 100,
+    width: '65%',
+    height: 56,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#0F4674',
+  },
+
+  buttonText: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: 'white',
+  },
+
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    margin: 20,
+    fontWeight: '700',
+    width: '85%',
+    fontSize: 22,
+    color: '#0F4674',
     textAlign: 'center',
   },
-  text: {
-    fontSize: 15,
-    marginStart: 20,
-    marginTop: 20,
+  agreementText: {
+    color: 'rgba(60, 60, 67, 0.9)',
+    width: '70%',
+    textAlign: 'center',
+    marginTop: 10,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-  btn: {
-    margin: 50,
-    borderWidth: 2,
-    color: '#ffff',
+  termsText: {
+    fontWeight: '500',
+    textDecorationLine: 'underline',
   },
 });
