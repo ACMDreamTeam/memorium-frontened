@@ -42,7 +42,7 @@ function SignUpInit(navigation: any) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#0F4674',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
     position: 'relative',
@@ -55,8 +55,10 @@ const styles = StyleSheet.create({
   logo: {
     width: 285,
     height: 57,
-    position: 'absolute',
-    top: 240,
+    marginTop: 242,
+    marginBottom: 38,
+    // position: 'absolute',
+    // top: 240,
   },
 
   button: {
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
   textInput: {
     width: 375,
     height: 44,
-    margin: 10,
+    marginBottom: 27,
     borderWidth: 1,
     borderRadius: 100,
     backgroundColor: 'white',
