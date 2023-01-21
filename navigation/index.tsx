@@ -44,7 +44,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Login" component={Login} options={{ title: '' }} />
+      <Stack.Screen name="Login" component={Login} options={{ title: '', headerShown: false }} />
       <Stack.Screen name="Register" component={Resgister} options={{ title: '' }} />
       <Stack.Screen name="SignUp" component={SignUp} options={{ title: '' }} />
       <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />

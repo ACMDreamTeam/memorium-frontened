@@ -10,28 +10,23 @@ export default function Login({ navigation }: RootStackScreenProps<'Login'>) {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/images/memoriumlogo.png')} style={styles.logo}></Image>
-
-      <View style={styles.container}>
-        <Text style={styles.text}>Email ID</Text>
-        <TextInput placeholder="Email" style={styles.textInput} autoCapitalize="none" autoComplete="email" />
-
-        <Text style={styles.text}>Password</Text>
-        <TextInput
-          placeholder="Password"
-          secureTextEntry={true}
-          style={styles.textInput}
-          autoComplete="password"
-          autoCapitalize="none"
-        />
-      </View>
-      <TouchableOpacity style={styles.btn} onPress={() => LoginInit(navigation)}>
-        <Text>Log in</Text>
+      <Image source={require('../assets/images/memoriumwhite.png')} style={styles.logo}></Image>
+      <TextInput placeholder="Email" placeholderTextColor={'rgba(60, 60, 67, 0.6)'} style={styles.textInput} autoCapitalize="none" autoComplete="email" />
+      <TextInput
+        placeholder="Password"
+        placeholderTextColor={'rgba(60, 60, 67, 0.6)'}
+        secureTextEntry={true}
+        style={styles.textInput}
+        autoComplete="password"
+        autoCapitalize="none"
+      />
+      <TouchableOpacity style={styles.button} onPress={() => LoginInit(navigation)}>
+        <Text style={styles.buttonText}>Log in</Text>
       </TouchableOpacity>
-
-      <TouchableOpacity style={styles.signupbtn} onPress={() => SignUpInit(navigation)}>
-        <Text>Sign up</Text>
-      </TouchableOpacity>
+        <Text style={styles.signUpText}>
+          Don't have an account?  
+          <Text style={styles.signUp} onPress={() => SignUpInit(navigation)}> Sign up here</Text> 
+        </Text>
     </View>
   );
 }
@@ -49,39 +44,60 @@ const styles = StyleSheet.create({
     backgroundColor: '#0F4674',
     justifyContent: 'center',
     alignItems: 'center',
-    // height: '100%'
+    height: '100%',
+    position: 'relative',
   },
 
-  background:{
+  background: {
     backgroundColor: '#0F4674',
   },
 
   logo: {
-    width: 250,
-    height: 250,
-    resizeMode: 'contain',
+    width: 285,
+    height: 57,
+    position: 'absolute',
+    top: 240,
   },
 
-  signupbtn: {
-    marginTop: 25,
+  button: {
     borderWidth: 2,
-    borderRadius: 10,
-    padding: 10,
-    width: 200,
-    height: 45,
+    backgroundColor: '#fff',
+    marginTop: 25,
+    borderRadius: 100,
+    width: 311,
+    height: 56,
     alignItems: 'center',
-    alignContent: 'center',
-    borderColor: '#077294',
+    justifyContent: 'center',
+    borderColor: '#0F4674',
   },
+
+  buttonText:{
+    fontSize: 17,
+    fontWeight: '600',
+  },
+
+  signUpText:{
+    color: '#fff',
+    marginTop: 15,
+
+
+  },
+
+  signUp:{
+    color: '#fff',
+    textDecorationLine: 'underline',
+    fontWeight: '500',
+  },
+
   textInput: {
-    width: 200,
-    height: 40,
+    width: 375,
+    height: 44,
     margin: 10,
     borderWidth: 1,
-    padding: 10,
-
-    alignItems: 'center',
-    borderRadius: 5,
+    borderRadius: 100,
+    backgroundColor: 'white',
+    textAlign: 'left',
+    paddingLeft: 20,
   },
   title: {
     fontSize: 20,
