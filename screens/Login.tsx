@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   buttonText:{
     fontSize: 17,
     fontWeight: '600',
+    color: 'black',
   },
 
   signUpText:{
