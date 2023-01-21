@@ -51,9 +51,9 @@ function RootNavigator() {
       <Stack.Screen name="Camera_" component={Camera_} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="JournalAdd" component={JournalAdd} />
-      <Stack.Screen name="JournalView" component={JournalView} />
+      <Stack.Screen name="JournalView" component={JournalView} options={{ title: 'Journal' }} />
       <Stack.Screen name="ReminderAdd" component={ReminderAdd} />
-      <Stack.Screen name="ReminderView" component={ReminderView} />
+      <Stack.Screen name="ReminderView" component={ReminderView} options={{ title: 'Reminder' }} />
       <Stack.Screen name="AboutMe" component={AboutMe} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />

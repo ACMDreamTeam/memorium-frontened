@@ -5,7 +5,7 @@ import { RootStackScreenProps } from '../types';
 export default function AboutMe({ navigation }: RootStackScreenProps<'AboutMe'>) {
   return (
     <View style={styles.container}>
-      <Text>Reminder Add</Text>
+      <Text>About me</Text>
     </View>
   );
 }

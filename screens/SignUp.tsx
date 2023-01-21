@@ -21,9 +21,22 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
       <Text style={styles.title}>Sign up</Text>
       <View style={styles.container}>
         <Text style={styles.text1}>Username</Text>
-        <TextInput style={styles.textInput} autoCapitalize="none" autoComplete="name" onChangeText={setName} />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Your name"
+          placeholderTextColor="#000"
+          autoCapitalize="none"
+          autoComplete="name"
+          onChangeText={setName}
+        />
         <Text style={styles.text}>EmailID</Text>
-        <TextInput style={styles.textInput} autoComplete="email" autoCapitalize="none" onChangeText={setEmail} />
+        <TextInput
+          style={styles.textInput}
+          autoComplete="email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          onChangeText={setEmail}
+        />
         <Text style={styles.text}>Password</Text>
         <TextInput
           style={styles.textInput}

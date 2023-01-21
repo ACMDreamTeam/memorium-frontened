@@ -16,12 +16,8 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/e9508b8f-0b21-4b7b-9bcf-9d771640d823"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
+    "assetBundlePatterns": ["**/*"],
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",

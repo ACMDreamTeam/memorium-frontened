@@ -16,7 +16,7 @@ export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
             width: 40,
             height: 40,
             marginTop: 80,
-            marginStart: 15,
+            marginStart: 10,
           }}
         ></Image>
         <TextInput placeholder="Search" style={styles.textInput} autoCapitalize="none" />
@@ -25,21 +25,47 @@ export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
       <View style={styles.BackCard}>
         <View style={styles.flexbox2}>
           <TouchableOpacity style={styles.roundButton} onPress={() => openCamera(navigation)}>
-            <Text style={styles.btnTxt}>Camera</Text>
+            <Image
+              source={require('../assets/images/camera.png')}
+              style={{
+                width: 40,
+                height: 40,
+              }}
+            ></Image>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.roundButton} onPress={() => openJournal(navigation)}>
-            <Text style={styles.btnTxt}>Journal</Text>
+            <Image
+              source={require('../assets/images/journal.png')}
+              style={{
+                width: 40,
+                height: 40,
+              }}
+            ></Image>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.roundButton} onPress={() => openMedications(navigation)}>
-            <Text style={styles.btnTxt}>Medications</Text>
+          <TouchableOpacity style={styles.roundButton} onPress={() => openReminder(navigation)}>
+            <Image
+              source={require('../assets/images/reminder.png')}
+              style={{
+                width: 40,
+                height: 40,
+              }}
+            ></Image>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.roundButton} onPress={() => openAboutMe(navigation)}>
-            <Text style={styles.btnTxt}>About me</Text>
+            <Image
+              source={require('../assets/images/memory.png')}
+              style={{
+                width: 40,
+                height: 40,
+              }}
+            ></Image>
           </TouchableOpacity>
         </View>
+
+        <Text>Welcome</Text>
       </View>
     </View>
   );
@@ -52,12 +78,12 @@ export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
     navigation.navigate('JournalView');
   }
 
-  function openMedications(navigate: any) {
+  function openReminder(navigate: any) {
     navigation.navigate('ReminderView');
   }
 
   function openAboutMe(navigate: any) {
-    navigation.navigate('Camera_');
+    navigation.navigate('AboutMe');
   }
 }
 
@@ -78,6 +104,7 @@ const styles = StyleSheet.create({
   },
   flexbox2: {
     flex: 1,
+    marginHorizontal: 20,
     flexDirection: 'row',
     backgroundColor: '#ffff',
   },
@@ -87,7 +114,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
     flex: 1,
-    flexDirection: 'row',
+    marginTop: 20,
+    flexDirection: 'column',
   },
 
   roundButton: {
@@ -110,9 +138,8 @@ const styles = StyleSheet.create({
     marginTop: 80,
     borderWidth: 1,
     padding: 10,
-
     alignItems: 'center',
-    borderRadius: 5,
+    borderRadius: 10,
   },
   title: {
     fontSize: 20,
