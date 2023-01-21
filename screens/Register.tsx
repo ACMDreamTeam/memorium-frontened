@@ -84,7 +84,7 @@ async function PostAndSignUp(navigation: any, user: any) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ECF0F1',
+    backgroundColor: '#ffff',
   },
   textInput: {
     width: 200,

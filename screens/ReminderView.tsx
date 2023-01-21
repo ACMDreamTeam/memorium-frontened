@@ -5,7 +5,7 @@ import { RootStackScreenProps } from '../types';
 export default function ReminderView({ navigation }: RootStackScreenProps<'ReminderView'>) {
   return (
     <View style={styles.container}>
-      <Text>Reminder Add</Text>
+      <Text>Reminder View</Text>
     </View>
   );
 }
