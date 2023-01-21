@@ -1,11 +1,12 @@
 import { Alert, StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
-
+import * as React from 'react';
 import { TextInput, SafeAreaView, Button } from 'react-native';
 import { RootStackScreenProps } from '../types';
 import { useNavigation } from '@react-navigation/native';
 import { User } from '../Classes/User';
 import { useState } from 'react';
+
 const makeReqOptions = (method: string, body: any) => ({
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
@@ -16,7 +17,7 @@ const makeReqOptions = (method: string, body: any) => ({
   }),
 });
 
-export default function Resgister({ navigation, route }: RootStackScreenProps<'Register'>) {
+export default function Register({ navigation, route }: RootStackScreenProps<'Register'>) {
   let user: User = new User();
 
   const [age, setAge]: any = useState();
@@ -24,7 +25,7 @@ export default function Resgister({ navigation, route }: RootStackScreenProps<'R
 
   user.email = (route.params as any).user.email;
   user.name = (route.params as any).user.name;
-  user.passwrod = (route.params as any).user.password;
+  user.password = (route.params as any).user.password;
   user.age = age;
   user.gender = gender;
 
@@ -47,31 +48,32 @@ export default function Resgister({ navigation, route }: RootStackScreenProps<'R
 }
 
 async function PostAndSignUp(navigation: any, user: any) {
-  console.log(user.age, typeof user.age);
-  console.log(user.gender, typeof user.gender);
-
   try {
     await fetch('http://78.46.102.232:5001/auth/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email: user.email,
-        password: user.passwrod,
+        password: user.password,
         name: user.name,
         gender: user.gender,
         age: parseInt(user.age),
       }),
     }).then(response => {
       response.json().then(data => {
-        console.log(data, Array.isArray(data.message));
         if (data.error) {
+          if (data.message === 'User already exists') {
+            navigation.navigate('Login');
+          }
           Alert.alert(
             'Error',
-            data.error + '\n' + Array.isArray(data.message) ? data.message.join(', ') : data.message,
+            Array.isArray(data.message)
+              ? data.error + '\n' + data.message.join(', ')
+              : data.error + '\n' + data.message,
           );
           return;
         }
-        Alert.alert('Post created at : ', data.createdAt);
+        Alert.alert('Success', 'User created successfully');
         navigation.navigate('Main');
       });
     });

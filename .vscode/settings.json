@@ -10,5 +10,8 @@
     "**/bower_components": true,
     "**/*.code-search": true,
     "**/.yarn": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

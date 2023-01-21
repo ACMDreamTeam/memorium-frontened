@@ -1,38 +1,71 @@
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, Alert } from 'react-native';
 
 import { Text, View } from '../components/Themed';
-
+import * as React from 'react';
 import { TextInput, SafeAreaView, Button, TouchableOpacity } from 'react-native';
 import { RootStackScreenProps, RootTabScreenProps } from '../types';
 
 export default function Login({ navigation }: RootStackScreenProps<'Login'>) {
-  let EmailID = null;
+  const [email, setEmail]: any = React.useState();
+  const [password, setPassword]: any = React.useState();
 
   return (
     <View style={styles.container}>
       <Image source={require('../assets/images/memoriumwhite.png')} style={styles.logo}></Image>
-      <TextInput placeholder="Email" placeholderTextColor={'rgba(60, 60, 67, 0.6)'} style={styles.textInput} autoCapitalize="none" autoComplete="email" />
+      <TextInput
+        placeholder="Email"
+        placeholderTextColor={'rgba(60, 60, 67, 0.6)'}
+        style={styles.textInput}
+        onChangeText={setEmail}
+      />
       <TextInput
         placeholder="Password"
         placeholderTextColor={'rgba(60, 60, 67, 0.6)'}
         secureTextEntry={true}
         style={styles.textInput}
-        autoComplete="password"
-        autoCapitalize="none"
+        onChangeText={setPassword}
       />
-      <TouchableOpacity style={styles.button} onPress={() => LoginInit(navigation)}>
+      <TouchableOpacity style={styles.button} onPress={() => LoginInit(navigation, { email, password })}>
         <Text style={styles.buttonText}>Log in</Text>
       </TouchableOpacity>
-        <Text style={styles.signUpText}>
-          Don't have an account?  
-          <Text style={styles.signUp} onPress={() => SignUpInit(navigation)}> Sign up here</Text> 
+      <Text style={styles.signUpText}>
+        Don't have an account?
+        <Text style={styles.signUp} onPress={() => SignUpInit(navigation)}>
+          {' '}
+          Sign up here
         </Text>
+      </Text>
     </View>
   );
 }
 
-function LoginInit(navigation: any) {
-  navigation.navigate('Main');
+async function LoginInit(navigation: any, user: { email: string; password: string }) {
+  try {
+    await fetch('http://78.46.102.232:5001/auth/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: user.email,
+        password: user.password,
+      }),
+    }).then(response => {
+      response.json().then(data => {
+        if (data.error) {
+          Alert.alert(
+            'Error',
+            Array.isArray(data.message)
+              ? data.error + '\n' + data.message.join(', ')
+              : data.error + '\n' + data.message,
+          );
+          return;
+        }
+        Alert.alert('Success', 'Logged in successfully');
+        navigation.navigate('Main');
+      });
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 function SignUpInit(navigation: any) {
@@ -42,7 +75,7 @@ function SignUpInit(navigation: any) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#0F4674',
-    // justifyContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
     position: 'relative',
@@ -55,10 +88,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 285,
     height: 57,
-    marginTop: 242,
-    marginBottom: 38,
-    // position: 'absolute',
-    // top: 240,
+    position: 'absolute',
+    top: 240,
   },
 
   button: {
@@ -73,20 +104,17 @@ const styles = StyleSheet.create({
     borderColor: '#0F4674',
   },
 
-  buttonText:{
+  buttonText: {
     fontSize: 17,
     fontWeight: '600',
-    color: 'black',
   },
 
-  signUpText:{
+  signUpText: {
     color: '#fff',
     marginTop: 15,
-
-
   },
 
-  signUp:{
+  signUp: {
     color: '#fff',
     textDecorationLine: 'underline',
     fontWeight: '500',
@@ -95,13 +123,12 @@ const styles = StyleSheet.create({
   textInput: {
     width: '80%',
     height: 44,
-    marginBottom: 27,
+    margin: 10,
+    borderWidth: 1,
     borderRadius: 100,
     backgroundColor: 'white',
     textAlign: 'left',
     paddingLeft: 20,
-    marginLeft: 27,
-    marginRight: 28,
   },
   title: {
     fontSize: 20,

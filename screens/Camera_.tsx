@@ -1,9 +1,9 @@
-import { RootStackScreenProps, RootTabScreenProps } from '../types';
+import { RootStackScreenProps } from '../types';
 
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
-import { Video } from 'expo-av';
+import { ResizeMode, Video } from 'expo-av';
 
 export default function Camera_({ navigation }: RootStackScreenProps<'Camera_'>) {
   const [hasAudioPermission, setHasAudioPermission]: any = useState(null);
@@ -55,7 +55,13 @@ export default function Camera_({ navigation }: RootStackScreenProps<'Camera_'>)
       ></Button>
       <Button title="Take video" onPress={() => takeVideo()} />
       <Button title="Stop Video" onPress={() => stopVideo()} />
-
+      <Button
+        title="Upload video"
+        onPress={() => {
+          if (record === null) return alert('No video recorded');
+          handleUpload(record as any);
+        }}
+      />
       <Video
         ref={video}
         style={styles.video}
@@ -63,7 +69,7 @@ export default function Camera_({ navigation }: RootStackScreenProps<'Camera_'>)
           uri: record as any,
         }}
         useNativeControls
-        resizeMode="contain"
+        resizeMode={ResizeMode.CONTAIN}
         isLooping
         onPlaybackStatusUpdate={status => setStatus(() => status)}
       />
@@ -76,6 +82,21 @@ export default function Camera_({ navigation }: RootStackScreenProps<'Camera_'>)
     </View>
   );
 }
+
+const handleUpload = async (record: string | Blob) => {
+  const videoData = new FormData();
+  videoData.append('file', record, 'video.mp4');
+  try {
+    const response = await fetch('http://78.46.102.232:5001/users/upload', {
+      method: 'POST',
+      body: videoData,
+    });
+    const responseJson = await response.json();
+    console.log(responseJson);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const styles = StyleSheet.create({
   fixedRatio: {

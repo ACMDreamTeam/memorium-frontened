@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
-
+import * as React from 'react';
 import { TextInput, SafeAreaView, Button, TouchableOpacity } from 'react-native';
 import { RootStackScreenProps } from '../types';
 import { useState } from 'react';
@@ -15,24 +15,19 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
 
   user.name = name;
   user.email = email;
-  user.passwrod = Password;
+  user.password = Password;
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Sign up</Text>
       <View style={styles.container}>
         <Text style={styles.text1}>Username</Text>
-        <TextInput style={styles.textInput} autoCapitalize="none" autoComplete="name" onChangeText={setName} />
+        <TextInput style={styles.textInput} onChangeText={setName} />
         <Text style={styles.text}>EmailID</Text>
-        <TextInput style={styles.textInput} autoComplete="email" autoCapitalize="none" onChangeText={setEmail} />
+        <TextInput style={styles.textInput} onChangeText={setEmail} />
         <Text style={styles.text}>Password</Text>
-        <TextInput
-          style={styles.textInput}
-          autoComplete="password-new"
-          autoCapitalize="none"
-          onChangeText={setPassword}
-        />
+        <TextInput style={styles.textInput} secureTextEntry={true} onChangeText={setPassword} />
         <Text style={styles.text}>Confirm Password</Text>
-        <TextInput style={styles.textInput} autoComplete="password-new" autoCapitalize="none" />
+        <TextInput style={styles.textInput} secureTextEntry={true} />
       </View>
       <TouchableOpacity style={styles.signupbtn} onPress={() => SignUpUser(navigation, user)}>
         <Text>Sign up</Text>
@@ -42,14 +37,11 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
 }
 
 function SignUpUser(navigation: any, user: User) {
-  console.log(user.email);
-  console.log(user.name);
-  console.log(user.passwrod);
   navigation.navigate('Register', {
     user: {
       email: user.email,
       name: user.name,
-      password: user.passwrod,
+      password: user.password,
     },
   });
 }
