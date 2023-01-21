@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginTop: 25,
     borderRadius: 100,
-    width: 311,
+    width: '65%',
     height: 56,
     alignItems: 'center',
     justifyContent: 'center',
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
 
   textInput: {
-    width: 375,
+    width: '80%',
     height: 44,
     marginBottom: 27,
     borderRadius: 100,
