@@ -95,11 +95,12 @@ const styles = StyleSheet.create({
     width: 375,
     height: 44,
     marginBottom: 27,
-    borderWidth: 1,
     borderRadius: 100,
     backgroundColor: 'white',
     textAlign: 'left',
     paddingLeft: 20,
+    marginLeft: 27,
+    marginRight: 28,
   },
   title: {
     fontSize: 20,
