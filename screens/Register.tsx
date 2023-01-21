@@ -6,6 +6,15 @@ import { RootStackScreenProps } from '../types';
 import { useNavigation } from '@react-navigation/native';
 import { User } from '../Classes/User';
 import { useState } from 'react';
+const makeReqOptions = (method: string, body: any) => ({
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    title: 'foo',
+    body: 'bar',
+    userId: 1,
+  }),
+});
 
 export default function Resgister({ navigation, route }: RootStackScreenProps<'Register'>) {
   let user: User = new User();
@@ -13,22 +22,16 @@ export default function Resgister({ navigation, route }: RootStackScreenProps<'R
   const [age, setAge]: any = useState();
   const [gender, setGender]: any = useState();
 
-  user.email = route.params?.user.email;
-  user.name = route.params?.user.name;
-  user.passwrod = route.params?.user.password;
+  user.email = (route.params as any).user.email;
+  user.name = (route.params as any).user.name;
+  user.passwrod = (route.params as any).user.password;
   user.age = age;
   user.gender = gender;
-
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ postName: 'signup' }),
-  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Complete your profile for</Text>
-      <Text style={styles.title}>{route.params.user.name}</Text>
+      <Text style={styles.title}>{(route.params as any).user.name}</Text>
 
       <View style={styles.container}>
         <Text style={styles.text}>Age</Text>
@@ -44,20 +47,37 @@ export default function Resgister({ navigation, route }: RootStackScreenProps<'R
 }
 
 async function PostAndSignUp(navigation: any, user: any) {
-  console.log(user.age);
-  console.log(user.gender);
+  console.log(user.age, typeof user.age);
+  console.log(user.gender, typeof user.gender);
 
   try {
-    await fetch('https://reqres.in/api/posts', requestOptions).then(response => {
+    await fetch('http://78.46.102.232:5001/auth/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: user.email,
+        password: user.passwrod,
+        name: user.name,
+        gender: user.gender,
+        age: parseInt(user.age),
+      }),
+    }).then(response => {
       response.json().then(data => {
+        console.log(data, Array.isArray(data.message));
+        if (data.error) {
+          Alert.alert(
+            'Error',
+            data.error + '\n' + Array.isArray(data.message) ? data.message.join(', ') : data.message,
+          );
+          return;
+        }
         Alert.alert('Post created at : ', data.createdAt);
+        navigation.navigate('Main');
       });
     });
   } catch (error) {
     console.error(error);
   }
-
-  navigation.navigate('Main');
 }
 
 const styles = StyleSheet.create({

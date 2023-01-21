@@ -10,15 +10,7 @@ export default function Login({ navigation }: RootStackScreenProps<'Login'>) {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../assets/images/memoriumlogo.png')}
-        style={{
-          width: 250,
-          height: 250,
-
-          resizeMode: 'contain',
-        }}
-      ></Image>
+      <Image source={require('../assets/images/memoriumlogo.png')} style={styles.logo}></Image>
 
       <View style={styles.container}>
         <Text style={styles.text}>Email ID</Text>
@@ -54,9 +46,20 @@ function SignUpInit(navigation: any) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ffff',
+    backgroundColor: '#0F4674',
     justifyContent: 'center',
     alignItems: 'center',
+    // height: '100%'
+  },
+
+  background:{
+    backgroundColor: '#0F4674',
+  },
+
+  logo: {
+    width: 250,
+    height: 250,
+    resizeMode: 'contain',
   },
 
   signupbtn: {
