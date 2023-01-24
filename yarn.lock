@@ -8234,6 +8234,7 @@ __metadata:
     jest-expo: ~47.0.1
     pod-install: ^0.1.38
     prettier: ^2.8.2
+    radio-buttons-react-native: ^1.0.4
     react: 18.1.0
     react-dom: 18.2.0
     react-native: 0.70.5
@@ -9846,6 +9847,13 @@ __metadata:
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
   checksum: b676f8c040cdc5b12723ad2f91414d267605b26419d5c821ff03befa817ddd10e238d22b25d604920340fd73efd8ba795465a0377c4adf45a4a41e4234e42dc4
+  languageName: node
+  linkType: hard
+
+"radio-buttons-react-native@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "radio-buttons-react-native@npm:1.0.4"
+  checksum: 74082c442f683f425618f3d0ff6bd06b41791a5fd84d76a5e3f238ea9b5dd1854067ea458dd0acbaf6ef51f9bc40a5c880ca7e978ff5e5a82ad91b45a4442edc
   languageName: node
   linkType: hard
 

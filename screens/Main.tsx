@@ -23,7 +23,7 @@ export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
 
       <View style={styles.BackCard}>
         <View style={styles.flexbox2}>
-          <TouchableOpacity style={styles.roundButton} onPress={() => openCamera(navigation)}>
+          <TouchableOpacity style={styles.roundButton} onPress={() => openCamera()}>
             <Image
               source={require('../assets/images/camera.png')}
               style={{
@@ -33,7 +33,7 @@ export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
             ></Image>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.roundButton} onPress={() => openJournal(navigation)}>
+          <TouchableOpacity style={styles.roundButton} onPress={() => openJournal()}>
             <Image
               source={require('../assets/images/journal.png')}
               style={{
@@ -43,7 +43,7 @@ export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
             ></Image>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.roundButton} onPress={() => openReminder(navigation)}>
+          <TouchableOpacity style={styles.roundButton} onPress={() => openReminder()}>
             <Image
               source={require('../assets/images/reminder.png')}
               style={{
@@ -53,7 +53,7 @@ export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
             ></Image>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.roundButton} onPress={() => openAboutMe(navigation)}>
+          <TouchableOpacity style={styles.roundButton} onPress={() => openAboutMe()}>
             <Image
               source={require('../assets/images/memory.png')}
               style={{

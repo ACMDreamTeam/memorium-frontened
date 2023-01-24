@@ -12,7 +12,7 @@ export default function Login({ navigation }: RootStackScreenProps<'Login'>) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('Main')}>
-        <Text>Skip Login (For Testing Purposes)</Text>
+        <Text style={styles.signUpText}>Skip Login (For Testing Purposes)</Text>
       </TouchableOpacity>
       <Image source={require('../assets/images/memoriumwhite.png')} style={styles.logo}></Image>
       <TextInput

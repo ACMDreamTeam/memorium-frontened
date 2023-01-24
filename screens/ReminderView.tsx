@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { RootStackScreenProps } from '../types';
@@ -19,7 +20,10 @@ function AddReminder(navigation: any) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
 
   btn: {
     width: 200,
