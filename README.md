@@ -2,7 +2,7 @@
 
 ### To start
 ```
-yarn start
+yarn start-l
 ```
 
 ### For Journal Add & Reminder Add (Date picker) to work 
