@@ -5,7 +5,7 @@
 yarn start
 ```
 
-### For Journal Add (Date picker) to work 
+### For Journal Add & Reminder Add (Date picker) to work 
 
 For Android
 ```
