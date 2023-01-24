@@ -2,23 +2,24 @@ import { useState } from 'react';
 import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { Journal } from '../Classes/Journal';
 
-import DatePicker from 'react-native-modern-datepicker';
-import { getToday, getFormatedDate } from 'react-native-modern-datepicker';
+import DatePicker from 'react-native-date-picker';
 
 import { RootStackScreenProps } from '../types';
+import React from 'react';
+import dayjs from 'dayjs';
 
 export default function JournalAdd({ navigation }: RootStackScreenProps<'JournalAdd'>) {
   let journal_obj: Journal = new Journal();
   const [title, setTitle]: any = useState();
   const [journal, setJournal]: any = useState();
-  const [date, setDate]: any = useState();
+  const [date, setDate]: any = useState(new Date());
   const [open, setOpen] = useState(false);
-
-  let todaysDate: String = getToday();
 
   journal_obj.title = title;
   journal_obj.journal = journal;
   journal_obj.date = date;
+
+  const DateStr = dayjs(date).format('DD MMM YYYY');
 
   return (
     <SafeAreaView>
@@ -41,27 +42,23 @@ export default function JournalAdd({ navigation }: RootStackScreenProps<'Journal
               style={styles.textInput}
               autoCapitalize="none"
               placeholder="Date"
+              value={DateStr}
               onFocus={() => setOpen(true)}
             />
-          </View>
 
-          <View style={styles.date_cont}>
             <DatePicker
               modal
-              options={{
-                backgroundColor: '#090C08',
-                textHeaderColor: '#FFA25B',
-                textDefaultColor: '#F6E7C1',
-                selectedTextColor: '#fff',
-                mainColor: '#F4722B',
-                textSecondaryColor: '#D6C7A1',
-                borderColor: 'rgba(122, 146, 165, 0.1)',
+              open={open}
+              date={date}
+              mode="date"
+              onConfirm={date => {
+                setOpen(false);
+                setDate(date);
+                console.log(DateStr);
               }}
-              current={todaysDate}
-              selected={todaysDate}
-              mode="calendar"
-              minuteInterval={10}
-              style={{ borderRadius: 10 }}
+              onCancel={() => {
+                setOpen(false);
+              }}
             />
           </View>
 
@@ -120,6 +117,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     padding: 10,
+    justifyContent: 'center',
     alignItems: 'center',
     borderColor: '#077294',
   },
@@ -136,13 +134,5 @@ const styles = StyleSheet.create({
     fontSize: 15,
 
     marginTop: 20,
-  },
-
-  btn: {
-    width: 200,
-    height: 80,
-    margin: 50,
-    borderWidth: 2,
-    color: '#ffff',
   },
 });

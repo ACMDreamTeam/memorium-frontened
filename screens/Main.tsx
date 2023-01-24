@@ -3,10 +3,9 @@ import { StyleSheet, Image } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { TextInput, TouchableOpacity } from 'react-native';
 import { RootStackScreenProps } from '../types';
+import React from 'react';
 
 export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
-  let EmailID = null;
-
   return (
     <View style={[styles.container]}>
       <View style={[{ flexDirection: 'row' }]}>
@@ -64,25 +63,24 @@ export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
             ></Image>
           </TouchableOpacity>
         </View>
-
-        <Text>Welcome</Text>
       </View>
+      <Text>Welcome</Text>
     </View>
   );
 
-  function openCamera(navigate: any) {
+  function openCamera() {
     navigation.navigate('Camera_');
   }
 
-  function openJournal(navigate: any) {
+  function openJournal() {
     navigation.navigate('JournalView');
   }
 
-  function openReminder(navigate: any) {
+  function openReminder() {
     navigation.navigate('ReminderView');
   }
 
-  function openAboutMe(navigate: any) {
+  function openAboutMe() {
     navigation.navigate('AboutMe');
   }
 }

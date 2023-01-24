@@ -2,7 +2,7 @@
   "name": "memorium-react",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
@@ -21,6 +21,7 @@
     "@react-navigation/native-stack": "^6.9.7",
     "css-select": "^5.1.0",
     "css-tree": "^2.3.1",
+    "dayjs": "^1.11.7",
     "expo": "~47.0.12",
     "expo-asset": "~8.7.0",
     "expo-av": "^13.0.2",
