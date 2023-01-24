@@ -65,7 +65,7 @@ export default function JournalAdd({ navigation }: RootStackScreenProps<'Journal
             />
           </View>
 
-          <TouchableOpacity style={styles.signupbtn} onPress={() => AddJournal(navigation, journal_obj)}>
+          <TouchableOpacity style={styles.btn} onPress={() => AddJournal(navigation, journal_obj)}>
             <Text>Add Journal</Text>
           </TouchableOpacity>
         </ScrollView>
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
 
-  signupbtn: {
+  btn: {
     width: 200,
     height: 40,
     marginTop: 25,
