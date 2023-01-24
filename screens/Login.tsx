@@ -11,6 +11,9 @@ export default function Login({ navigation }: RootStackScreenProps<'Login'>) {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.navigate('Main')}>
+        <Text>Skip Login (For Testing Purposes)</Text>
+      </TouchableOpacity>
       <Image source={require('../assets/images/memoriumwhite.png')} style={styles.logo}></Image>
       <TextInput
         placeholder="Email"
@@ -89,7 +92,6 @@ const styles = StyleSheet.create({
     width: 285,
     height: 57,
     marginBottom: 38,
-
   },
 
   button: {
