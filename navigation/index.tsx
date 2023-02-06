@@ -51,7 +51,7 @@ function RootNavigator() {
       <Stack.Screen name="JournalView" component={JournalView} options={{ title: 'Journal' }} />
       <Stack.Screen name="ReminderAdd" component={ReminderAdd} />
       <Stack.Screen name="ReminderView" component={ReminderView} options={{ title: 'Reminder' }} />
-      <Stack.Screen name="AboutMe" component={AboutMe} />
+      <Stack.Screen name="AboutMe" component={AboutMe} options={{ title: '' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>

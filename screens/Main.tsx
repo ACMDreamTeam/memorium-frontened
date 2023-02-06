@@ -1,4 +1,4 @@
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, Pressable } from 'react-native';
 
 import { Text, View } from '../components/Themed';
 import { TextInput, TouchableOpacity } from 'react-native';
@@ -9,15 +9,18 @@ export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
   return (
     <View style={[styles.container]}>
       <View style={[{ flexDirection: 'row' }]}>
-        <Image
-          source={require('../assets/images/user.png')}
-          style={{
-            width: 40,
-            height: 40,
-            marginTop: 80,
-            marginStart: 10,
-          }}
-        ></Image>
+        <Pressable onPress={() => navigation.navigate('AboutMe')}>
+          <Image
+            source={require('../assets/images/user.png')}
+            style={{
+              width: 40,
+              height: 40,
+              marginTop: 80,
+              marginStart: 10,
+            }}
+          ></Image>
+        </Pressable>
+
         <TextInput placeholder="Search" style={styles.textInput} autoCapitalize="none" />
       </View>
 
@@ -64,7 +67,9 @@ export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
           </TouchableOpacity>
         </View>
       </View>
-      <Text>Welcome</Text>
+      <View style={styles.flexbox1}>
+        <Text>Welcome to Memorium</Text>
+      </View>
     </View>
   );
 
