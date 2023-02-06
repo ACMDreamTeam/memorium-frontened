@@ -16,6 +16,10 @@ export default function AboutMe({ navigation }: RootStackScreenProps<'AboutMe'>)
       <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('JournalView')}>
         <Text>Check Journal</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Login')}>
+        <Text>Log Out</Text>
+      </TouchableOpacity>
     </View>
   );
 }
