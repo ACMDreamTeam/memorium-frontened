@@ -2,10 +2,10 @@
 
 ### To start
 ```
-yarn start
+yarn start-l
 ```
 
-### For Journal Add (Date picker) to work 
+### For Journal Add & Reminder Add (Date picker) to work 
 
 For Android
 ```
