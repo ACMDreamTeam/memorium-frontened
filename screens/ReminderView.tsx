@@ -6,10 +6,10 @@ import { RootStackScreenProps } from '../types';
 export default function ReminderView({ navigation }: RootStackScreenProps<'ReminderView'>) {
   return (
     <View style={styles.container}>
-      <Text>Reminder View</Text>
+      <Text style={styles.title}>Reminder View</Text>
 
       <TouchableOpacity style={styles.btn} onPress={() => AddReminder(navigation)}>
-        <Text>Add Reminder</Text>
+        <Text style={styles.btnTxt}>Add Reminder</Text>
       </TouchableOpacity>
     </View>
   );
@@ -21,20 +21,30 @@ function AddReminder(navigation: any) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: 'white',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
   },
 
+  title: {
+    fontSize: 20,
+    marginTop: 20,
+    color: '#000',
+  },
   btn: {
-    width: 200,
-    height: 40,
-    marginTop: 25,
-    justifyContent: 'center',
     borderWidth: 2,
+    backgroundColor: '#0F4674',
+    marginTop: 25,
+    borderRadius: 100,
+    width: '65%',
+    height: 56,
 
-    borderRadius: 10,
-    padding: 10,
     alignItems: 'center',
-    borderColor: '#077294',
+    justifyContent: 'center',
+    borderColor: '#0F4674',
+  },
+  btnTxt: {
+    color: '#fff',
   },
 });

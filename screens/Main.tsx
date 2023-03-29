@@ -93,6 +93,8 @@ export default function Main({ navigation }: RootStackScreenProps<'Main'>) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
   },
   flexbox2: {
     flex: 1,
-    marginHorizontal: 20,
+    marginHorizontal: 10,
     flexDirection: 'row',
     backgroundColor: '#ffff',
   },
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     borderRadius: 80,
-    marginStart: 15,
+    margin: 8,
     color: 'white',
     backgroundColor: 'black',
   },
